@@ -1,0 +1,5 @@
+name: RaidableBases
+main: com.arzio.raidablebases.RaidableBases
+version: 1.0
+author: Arzio
+depend: [ArzioLib, HolographicDisplays]

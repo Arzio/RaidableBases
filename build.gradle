@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+// This project MUST be compiled with Java 1.7
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+	jcenter()
+	mavenCentral()
+}
+
+allprojects {
+	repositories {
+		jcenter()
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+dependencies {
+	implementation 'com.github.Arzio:ArzioLib:1.6.1'
+}
+
+processResources {
+    // Replaces the PROJECT_VERSION tag inside of yml resources by the project version
+    filter { 
+    	String line -> line.replace('{PROJECT_VERSION}', version) 
+    }
+}
+
