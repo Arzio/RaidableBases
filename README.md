@@ -4,7 +4,7 @@ Make your Crafting Dead server even more competitive with this base raid system!
 
 <p align="center">
   <b>Check the preview below:</b><br>
-  <a href="https://www.youtube.com/watch?v=EyKIsZ8s3C8">
+  <a href="https://www.youtube.com/watch?v=EyKIsZ8s3C8" target="_blank">
     <img width="460" height="300" src="https://img.youtube.com/vi/EyKIsZ8s3C8/0.jpg">
   </a>
 </p>
