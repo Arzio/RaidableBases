@@ -11,6 +11,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.TNTPrimed;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
@@ -28,7 +29,7 @@ import com.arzio.raidablebases.event.BaseBlockDamageEvent;
 import com.arzio.raidablebases.util.BaseDamageCause;
 
 /**
- * Listener which listens for explosions and applies the damage to bases.
+ * Listens for explosions and applies the damage to bases.
  * @author Arzio
  */
 public class BaseDamageListener implements Listener {
@@ -48,10 +49,10 @@ public class BaseDamageListener implements Listener {
 		}
 	}
 
-	@EventHandler
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
 	public void onExplode(EntityExplodeEvent event) {
 		
-		List<Block> unmodifiedExplodedBlocksList = new ArrayList<Block>(event.blockList());
+		List<Block> unmodifiedExplodedBlocksList = new ArrayList<>(event.blockList());
 		
 		// Disables explosion damage for all blocks except TNT
 		if (RaidableConfig.INSTANCE.shouldDisableTNTdestroyingNonBaseBlocks()) {
@@ -94,7 +95,7 @@ public class BaseDamageListener implements Listener {
 		}
 	}
 
-	@EventHandler
+	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
 	public void onBreak(BlockBreakEvent event) {
 		if (baseProvider.isPartOfAnyBase(event.getBlock())) {
 			BaseDamage base = this.damageProvider.getBaseDamage(baseProvider.getBaseFromPart(event.getBlock()));

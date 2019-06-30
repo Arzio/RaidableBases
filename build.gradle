@@ -16,9 +16,24 @@ allprojects {
 	}
 }
 
-dependencies {
-	implementation 'com.github.Arzio:ArzioLib:1.6.1'
+def downloadedJar = { name, url ->
+	File file = new File("$buildDir/download/${name}")
+
+	if (!file.exists()) {
+		file.parentFile.mkdirs()
+		println "Downloading ${name}"
+		ant.get(src: url, dest: file)
+	}
+
+	files(file.absolutePath)
 }
+
+dependencies {
+	implementation downloadedJar('craftbukkit-1.6.4-R2.0.jar', 'https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.6.4-R2.0.jar')
+	implementation downloadedJar('ArzioLib-1.6.3.jar', 'https://github.com/Arzio/ArzioLib/releases/download/1.6.3/ArzioLib-1.6.3.jar')
+	implementation downloadedJar('HolographicDisplays-2.3.2.jar', 'https://dev.bukkit.org/projects/holographic-displays/files/2652670/download')
+}
+
 
 processResources {
     // Replaces the PROJECT_VERSION tag inside of yml resources by the project version
