@@ -18,6 +18,7 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.entity.ExplosionPrimeEvent;
 
 import com.arzio.arziolib.api.BaseProvider;
+import com.arzio.arziolib.api.util.CDBaseMaterial;
 import com.arzio.arziolib.api.util.CDEntityType;
 import com.arzio.arziolib.api.util.EntityUtil;
 import com.arzio.arziolib.api.wrapper.Base;
@@ -97,10 +98,13 @@ public class BaseDamageListener implements Listener {
 
 	@EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
 	public void onBreak(BlockBreakEvent event) {
-		if (baseProvider.isPartOfAnyBase(event.getBlock())) {
-			BaseDamage base = this.damageProvider.getBaseDamage(baseProvider.getBaseFromPart(event.getBlock()));
-			BlockDamage block = base.getBlockDamage(event.getBlock());
-			if (!block.isBaseCenter()) {
+		if (!CDBaseMaterial.isCenter(event.getBlock())){
+			Base base = baseProvider.getBaseFromPart(event.getBlock());
+
+			if (base != null && base.isOwner(event.getPlayer())){
+				BaseDamage baseDamage = this.damageProvider.getBaseDamage(base);
+				BlockDamage block = baseDamage.getBlockDamage(event.getBlock());
+				
 				block.destroy();
 			}
 		}
