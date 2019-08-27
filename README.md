@@ -17,5 +17,5 @@ Make your Crafting Dead server even more competitive with this base raid system!
 - Configure a resistência dos blocos na config. Por padrão, a resistência dos blocos está definido em 1 de vida.
 
 ## Important instructions (EN)
-- Apply the **cd-build allow** flag in your survival map instead of using **building deny** or **construct deny**.
+- Apply the **cd-build allow** flag in your survival map instead of using **build deny** or **construct deny**.
 - You **must** configure the block resistance for every base block in the config. By default, the resistance of the blocks are set to 1.
