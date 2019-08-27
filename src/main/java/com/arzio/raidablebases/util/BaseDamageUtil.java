@@ -52,7 +52,7 @@ public class BaseDamageUtil {
 
 	public static String getHealthbar(double currentHealth, double maxHealth, int healthBarScale) {
 		StringBuilder sb = new StringBuilder();
-		sb.append("งa");
+		sb.append("ยงa");
 		
 		double healthPercent = currentHealth / maxHealth;
 		boolean alreadyHasColor = false;
@@ -61,7 +61,7 @@ public class BaseDamageUtil {
 			double barPercent = (double) (i) / (double) healthBarScale;
 
 			if (barPercent >= healthPercent && !alreadyHasColor) {
-				sb.append("ง8");
+				sb.append("ยง8");
 				alreadyHasColor = true;
 			}
 			sb.append("||");

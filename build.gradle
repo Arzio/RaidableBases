@@ -4,6 +4,10 @@ apply plugin: 'java'
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
 repositories {
 	jcenter()
 	mavenCentral()
@@ -30,7 +34,7 @@ def downloadedJar = { name, url ->
 
 dependencies {
 	implementation downloadedJar('craftbukkit-1.6.4-R2.0.jar', 'https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.6.4-R2.0.jar')
-	implementation downloadedJar('ArzioLib-1.6.3.jar', 'https://github.com/Arzio/ArzioLib/releases/download/1.6.3/ArzioLib-1.6.3.jar')
+	implementation downloadedJar('ArzioLib-1.7.9.jar', 'https://github.com/Arzio/ArzioLib/releases/download/1.7.9/ArzioLib-1.7.9.jar')
 	implementation downloadedJar('HolographicDisplays-2.3.2.jar', 'https://dev.bukkit.org/projects/holographic-displays/files/2652670/download')
 }
 
