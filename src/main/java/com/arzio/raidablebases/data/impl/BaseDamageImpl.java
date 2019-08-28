@@ -131,7 +131,9 @@ public class BaseDamageImpl implements BaseDamage {
 
 	@Override
 	public void hideHologram() {
-		this.hologram.delete();
+		if (this.isHologramValid()){
+			this.hologram.delete();
+		}
 	}
 
 	@Override
